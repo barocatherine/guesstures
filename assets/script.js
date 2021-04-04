@@ -6,38 +6,75 @@ var questionNumber = 0;
 var chosenFaces = [];
 
 function faceChooser(){
+    var sources = faceImageSources.slice();
     for(var i = 0; i <6; i++){
-        var randomNumber = Math.floor((Math.random()*19)+1);
+        var randomNumber = Math.floor((Math.random()*sources.length));
         console.log(randomNumber);
-        var check = chosenFaces.includes(faceImageSources[randomNumber])
-        if(check){
-            randomNumber = Math.floor((Math.random()*19)+1);
-            console.log("this is a new random number "+randomNumber)
-        }
-        chosenFaces.push(faceImageSources[randomNumber]);
+        chosenFaces.push(sources[randomNumber]);
+        sources.splice(randomNumber, 1);
         console.log(chosenFaces);
     }
 }
 faceChooser();
+function emotionChecker(){
+    fetch()
+}
 function displayQuiz(){
     pictureWrapper.innerHTML="";
     answerWrapper.innerHTML="";
     var picture = document.createElement("img");
+    var anger = document.createElement("button");
+    anger.setAttribute("value","anger");
+    anger.setAttribute("type", "button");
+    anger.innerHTML = "Anger";
+    anger.onclick = function(){checkAnswer()};
+    answerWrapper.appendChild(anger);
+    var contempt = document.createElement("button");
+    contempt.setAttribute("value", "contempt");
+    contempt.setAttribute("type", "button");
+    contempt.innerHTML = "Contempt";
+    contempt.onclick = function(){checkAnswer()};
+    answerWrapper.appendChild(contempt);
+    var disgust = document.createElement("button");
+    disgust.setAttribute("value", "disgust");
+    disgust.setAttribute("type", "button");
+    disgust.innerHTML = "Disgust";
+    disgust.onclick = function(){checkAnswer()};
+    answerWrapper.appendChild(disgust);
+    var fear = document.createElement("button");
+    fear.setAttribute("value", "fear");
+    fear.setAttribute("type", "button");
+    fear.innerHTML = "Fear";
+    fear.onclick = function(){checkAnswer()};
+    answerWrapper.appendChild(fear);
+    var happiness = document.createElement("button");
+    happiness.setAttribute("value", "happiness");
+    happiness.setAttribute("type", "button");
+    happiness.innerHTML = "Happiness";
+    happiness.onclick = function(){checkAnswer()};
+    answerWrapper.appendChild(happiness);
+    var neutral = document.createElement("button");
+    neutral.setAttribute("value", "neutral");
+    neutral.setAttribute("type", "button");
+    neutral.innerHTML = "Neutral";
+    neutral.onclick = function(){checkAnswer()};
+    answerWrapper.appendChild(neutral);
+    var sadness = document.createElement("button");
+    sadness.setAttribute("value", "sadness");
+    sadness.setAttribute("type", "button");
+    sadness.innerHTML = "Sadness";
+    sadness.onclick = function(){checkAnswer()};
+    answerWrapper.appendChild(sadness);
+    var surprise = document.createElement("button");
+    surprise.setAttribute("value", "surprise");
+    surprise.setAttribute("type", "button");
+    surprise.innerHTML = "Surprise";
+    surprise.onclick = function(){checkAnswer()};
+    answerWrapper.appendChild(surprise);
     console.log(chosenFaces[questionNumber])
     picture.setAttribute("src", "./assets/img/"+chosenFaces[questionNumber]+".jpg");
     pictureWrapper.appendChild(picture);
     console.log(pictureWrapper)
-    var nextButton = document.createElement("button")
-    nextButton.setAttribute("type", "button");
-    nextButton.innerHTML= "Next"
-    answerWrapper.appendChild(nextButton);
-    console.log(questionNumber);
-    if(questionNumber >= 5){
-        nextButton.onclick = function(){gameEnder()}
-    }
-    else{
-        nextButton.onclick = function(){checkAnswer()}  
-    }
 }
 //check answer and call next question
 function checkAnswer(){
