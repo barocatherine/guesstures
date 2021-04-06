@@ -49,11 +49,12 @@ var startQuiz = document.getElementById("start-quiz");
 var questionNumber = 0;
 var score = 0
 var chosenFaces = [];
-// https://nmisustin.github.io/guesstures/assets/img/happy_1.jpg
+var highScores = [];
+var highScoreButton = document.getElementById("highScore")
 // this function creates a new array of different faces to use for the quiz
 function faceChooser(){
     var sources = faceImageSources.slice();
-    for(var i = 0; i <6; i++){
+    for(var i = 0; i <10; i++){
         var randomNumber = Math.floor((Math.random()*sources.length));
         console.log(randomNumber);
         chosenFaces.push(sources[randomNumber]);
@@ -98,7 +99,7 @@ function emotionChecker(){
 }
 //this function displays the quiz
 function displayQuiz(){
-    if(questionNumber>5){
+    if(questionNumber>9){
         quizEnder();
     }
     else{
@@ -132,6 +133,14 @@ function checkAnswer(answer){
     questionNumber++;
     displayQuiz();
 }
+//this fuction will retrieve scores
+function getScores(){
+    var highScore = localStorage.getItem("highScores");
+    if(!highScore){
+        return false;
+    }
+    highScores=JSON.parse(highScore);
+}
 //this will be called when the quiz is over
 function quizEnder(){
     pictureWrapper.innerHTML="";
@@ -139,7 +148,32 @@ function quizEnder(){
     scoreWrapper.innerHTML="";
     scoreWrapper.innerHTML=score;
     var endMessage = document.createElement("p");
-    endMessage.innerHTML = "The quiz is over"
+    endMessage.innerHTML = "Congratulations you scored "+ score+"/10!";
     pictureWrapper.appendChild(endMessage);
+    var highScore = score;
+    getScores();
+    highScores.push(highScore);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+}
+function displayScores(){
+    pictureWrapper.innerHTML="";
+    answerWrapper.innerHTML="";
+    getScores();
+    var orderedScores = [];
+    for (var i=0; i<highScores.length; i++){
+        orderedScores.push(i);
+    }
+    orderedScores.sort(function(a, b){
+        return highScores[b] - highScores[a];
+    })
+    for (var i = 0 ; i < orderedScores.length; i++){
+        var scoreDisplay = document.createElement("p");
+        if (highScores.length - 1 === orderedScores[i]){
+            scoreDisplay.setAttribute("class", "mostRecent");
+        }
+        scoreDisplay.innerHTML = highScores[orderedScores[i]];
+        pictureWrapper.appendChild(scoreDisplay);
+    }
 }
 startQuiz.onclick= function(){displayQuiz()}
+highScoreButton.onclick = function(){displayScores()}
