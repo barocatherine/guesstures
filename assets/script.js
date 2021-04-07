@@ -112,6 +112,7 @@ function displayQuiz(){
         for(let i=0; i<emotions.length; i++){
             var emotion = document.createElement("button");
             emotion.setAttribute("type", "button");
+            emotion.className = "button is-medium is-info is-one-fifth is-variable"; // "button is-large is-info" will make the big blue buttons in Bulma
             emotion.innerHTML = emotions[i].uppercase;
             emotion.onclick = function(){checkAnswer(emotions[i].lowercase)};
             answerWrapper.appendChild(emotion);
