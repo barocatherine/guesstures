@@ -1,5 +1,5 @@
 var faceImageSources = ["confused_1", "happy_1", "happy_2", "happy_3", "happy_4", "happy_5", "happy_6", "happy_7", "happy_8",
- "mad_1", "mad_2", "mad_3", "sad_1", "sad_2", "sad_3", "sad_4", "sad_5", "sad_6", "surprised_1", "surprised_2", "neutral_1", "neutral_2", "neutral_3", "neutral_4", "neutral_5"];
+ "mad_1", "mad_2", "mad_3", "sad_1", "sad_2", "sad_3", "sad_4", "sad_5", "sad_6", "surprised_1", "surprised_2", "neutral_1", "neutral_2", "neutral_3", "neutral_4", "neutral_5", "neutral_6", "neutral_7"];
 var emotions = [
     {
         uppercase: "Anger",
