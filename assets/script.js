@@ -113,7 +113,7 @@ function displayQuiz(){
         for(let i=0; i<emotions.length; i++){
             var emotion = document.createElement("button");
             emotion.setAttribute("type", "button");
-            emotion.className = "button is-medium is-info is-one-fifth is-variable"; // "button is-large is-info" will make the big blue buttons in Bulma
+            emotion.className = "button is-medium is-info is-rounded"; // "button is-large is-info is-rounded" will make the big blue buttons in Bulma if you need
             emotion.innerHTML = emotions[i].uppercase;
             emotion.onclick = function(){checkAnswer(emotions[i].lowercase)};
             answerWrapper.appendChild(emotion);
@@ -150,7 +150,11 @@ function quizEnder(){
     scoreWrapper.innerHTML="";
     scoreWrapper.innerHTML=score;
     var endMessage = document.createElement("p");
-    endMessage.innerHTML = "Congratulations you scored "+ score+"/10!";
+        if (score <= 7){
+            endMessage.innerHTML = "You scored " + score + "/10!";
+        } else {
+            endMessage.innerHTML = "Congratulations! You scored "+ score+"/10!";
+        }
     pictureWrapper.appendChild(endMessage);
     var highScore = score;
     getScores();

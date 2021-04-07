@@ -4,9 +4,17 @@
 
 #title-home {
     font-family: 'Tangerine', Serif;
+}
+
+.nb-title {
     font-size: 48px;
     text-decoration: none;
-    color: white;
 }
+
+.hero-title {
+    font-size: 60px;
+    text-decoration: underline;
+}
+
 
 

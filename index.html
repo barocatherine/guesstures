@@ -14,7 +14,7 @@
         <nav class="navbar is-info" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
             <a class="navbar-item" href="index.html">
-              <h1 id="title-home">Guess-tures</h1>            
+              <h1 class="nb-title" id="title-home">Guess-tures</h1>            
             </a>
           </div>
           <div id="navbarBasicExample" class="navbar-menu">
@@ -26,25 +26,29 @@
             </div>
             <div class="navbar-end">
               <div class="navbar-item">
-                <h2 class="has-text-right">Score:<span id="score"></span></h2>
+                <h2 class="has-text-right">Score: <span id="score"></span></h2>
               </div>
             </div>
           </div>
         </nav>
 
-        <section id="quiz">
+        <section class="has-text-centered" id="quiz">
           <div class="container">
             <div class="columns">
                 <div class="column"></div>
                   <div class="column has-text-centered mt-6" id="picture-wrapper"> 
                     <div class="container has-text-centered">
-                      <button class="button is-large is-info" type="button" id="start-quiz">Start Quiz</button>
+                      <h2 class="hero-title has-text-weight-medium" id="title-home">Guess-tures</h3><p class="is-italic" style="line-height: 2.5;">A simple facial flash-card game for individuals who may struggle with 
+                        reading emotion on faces. Guess-tures was developed as a tool to be used to help identify, memorize, 
+                        and utilize emotions and their recognition.
+                      </p> </br></br>
+                      <button class="button is-large is-info is-rounded" type="button" id="start-quiz">Start Game</button>
                     </div>
                   </div>
                   <div class="column"></div>
             </div>
-              <div class="columns is-variable is-1 has-text-centered">
-                <div class="column" id="answer-wrapper"><!--this is where the answers should load--></div>
+              <div class="has-text-centered">
+                <div class="buttons is-centered"><div id="answer-wrapper"><!--this is where the answers should load--></div></div>
               </div>
           </div>
         </section>
