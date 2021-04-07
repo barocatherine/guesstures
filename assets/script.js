@@ -52,6 +52,7 @@ var score = 0
 var chosenFaces = [];
 var highScores = [];
 var highScoreButton = document.getElementById("highScore")
+var hintButton = document.getElementById("hint")
 // this function creates a new array of different faces to use for the quiz
 function faceChooser(){
     var sources = faceImageSources.slice();
@@ -181,5 +182,31 @@ function displayScores(){
         pictureWrapper.appendChild(scoreDisplay);
     }
 }
+function getHint(){
+   var apiUrl = "https://dictionaryapi.com/api/v3/references/thesaurus/json/"+largestEmotion.lowercase+"?key=519cbf7a-b697-4c6e-b33a-2c5cb6282363";
+   fetch(apiUrl).then(function(response){
+       console.log(response)
+       response.json()
+       .then(function(data){
+           console.log(data);
+           var notification = document.createElement("div")
+           notification.setAttribute("class", "notification")
+           var notificationButton = document.createElement("button")
+           notificationButton.setAttribute("class", "delete")
+           var notificationContent = document.createElement("p")
+           var contentArray = [];
+           for(var i=0; i<3;i++){
+                var content = data[0].meta.syns[0][i];
+                contentArray.push(content);
+            }
+            notificationContent.innerHTML= contentArray[0]+", "+contentArray[1]+", "+contentArray[2];
+            console.log(notificationContent);
+            notification.appendChild(notificationButton);
+            notification.appendChild(notificationContent)
+            answerWrapper.appendChild(notification)
+       })
+   })
+}
+hintButton.onclick = function(){getHint()}
 startQuiz.onclick= function(){displayQuiz()}
 highScoreButton.onclick = function(){displayScores()}
