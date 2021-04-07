@@ -1,5 +1,5 @@
 var faceImageSources = ["confused_1", "happy_1", "happy_2", "happy_3", "happy_4", "happy_5", "happy_6", "happy_7", "happy_8",
- "mad_1", "mad_2", "mad_3", "sad_1", "sad_2", "sad_3", "sad_4", "sad_5", "sad_6", "surprised_1", "surprised_2"];
+ "mad_1", "mad_2", "mad_3", "sad_1", "sad_2", "sad_3", "sad_4", "sad_5", "sad_6", "surprised_1", "surprised_2", "neutral_1", "neutral_2", "neutral_3", "neutral_4", "neutral_5"];
 var emotions = [
     {
         uppercase: "Anger",
@@ -113,6 +113,7 @@ function displayQuiz(){
         for(let i=0; i<emotions.length; i++){
             var emotion = document.createElement("button");
             emotion.setAttribute("type", "button");
+            emotion.className = "button is-medium is-info is-one-fifth is-variable"; // "button is-large is-info" will make the big blue buttons in Bulma
             emotion.innerHTML = emotions[i].uppercase;
             emotion.onclick = function(){checkAnswer(emotions[i].lowercase)};
             answerWrapper.appendChild(emotion);
