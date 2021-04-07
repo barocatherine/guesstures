@@ -1,6 +1,14 @@
+* {
+    font-family: 'Arial', sans-serif;
+}
+
 #title-home {
     font-family: 'Tangerine', Serif;
     font-size: 48px;
     text-decoration: none;
     color: white;
+}
+
+#start-quiz {
+    vertical-align: middle;
 }
