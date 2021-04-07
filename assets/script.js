@@ -190,9 +190,9 @@ function getHint(){
        .then(function(data){
            console.log(data);
            var notification = document.createElement("div")
-           notification.setAttribute("class", "notification")
+           notification.setAttribute("class", "notification is-info is-light")
            var notificationButton = document.createElement("button")
-           notificationButton.setAttribute("class", "delete")
+            notificationButton.setAttribute("class", "delete is-small")
            var notificationContent = document.createElement("p")
            var contentArray = [];
            for(var i=0; i<3;i++){
@@ -206,7 +206,19 @@ function getHint(){
             answerWrapper.appendChild(notification)
        })
    })
+   
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+      const $notification = $delete.parentNode;
+  
+      $delete.addEventListener('click', () => {
+        $notification.parentNode.removeChild($notification);
+      });
+    });
+  });
+
 hintButton.onclick = function(){getHint()}
 startQuiz.onclick= function(){displayQuiz()}
 highScoreButton.onclick = function(){displayScores()}
