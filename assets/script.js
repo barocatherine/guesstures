@@ -157,7 +157,12 @@ function quizEnder(){
             endMessage.innerHTML = "Congratulations! You scored "+ score+"/10!";
         }
     pictureWrapper.appendChild(endMessage);
-    var highScore = score;
+    var date = moment().format("MMM Do");
+    var highScore = {
+        day: date,
+        highScore: score
+    };
+    console.log(highScore);
     getScores();
     highScores.push(highScore);
     localStorage.setItem("highScores", JSON.stringify(highScores));
@@ -178,7 +183,7 @@ function displayScores(){
         if (highScores.length - 1 === orderedScores[i]){
             scoreDisplay.setAttribute("class", "mostRecent");
         }
-        scoreDisplay.innerHTML = highScores[orderedScores[i]];
+        scoreDisplay.innerHTML = highScores[orderedScores[i]].highScore + " : "+ highScores[orderedScores[i]].day;
         pictureWrapper.appendChild(scoreDisplay);
     }
 }
