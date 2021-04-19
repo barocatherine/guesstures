@@ -201,14 +201,23 @@ function getHint(){
            var notificationContent = document.createElement("p")
            var contentArray = [];
            for(var i=0; i<3;i++){
-                var content = data[0].meta.syns[0][i];
-                contentArray.push(content);
+               if(data[0].meta.syns[0][i]=== undefined){
+                   var content = "";
+                   contentArray.push(content);
+               }
+               else{
+                    var content = data[0].meta.syns[0][i] + " ";
+                    contentArray.push(content);
+               }
             }
-            notificationContent.innerHTML= contentArray[0]+", "+contentArray[1]+", "+contentArray[2];
+            notificationContent.innerHTML= contentArray.join();
             console.log(notificationContent);
             notification.appendChild(notificationButton);
             notification.appendChild(notificationContent)
             answerWrapper.appendChild(notification)
+            notificationButton.onclick = function(){
+                notification.innerHTML = "";
+            }
        })
    })
    
